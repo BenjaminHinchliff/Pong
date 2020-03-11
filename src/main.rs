@@ -19,6 +19,7 @@ use amethyst::{
 };
 
 mod pong;
+mod systems;
 
 use crate::pong::Pong;
 
@@ -42,8 +43,9 @@ fn main() -> amethyst::Result<()> {
                 .with_plugin(RenderFlat2D::default()),
         )?
         .with_bundle(TransformBundle::new())?
-        .with_bundle(input_bundle)?;
-    
+        .with_bundle(input_bundle)?
+        .with(systems::PaddleSystem, "paddle_system", &["input_system"]);
+
     let assets_dir = app_root.join("assets");
     let mut world = World::new();
     let mut game = Application::new(assets_dir, Pong, game_data)?;
