@@ -1,16 +1,8 @@
 use amethyst::{
     input::{InputBundle, StringBindings},
-    assets::{AssetStorage, Loader, Handle},
-    core::transform::{Transform, TransformBundle},
-    ecs::prelude::{Component, DenseVecStorage},
+    core::transform::{TransformBundle},
     prelude::*,
     renderer::{
-        Camera,
-        ImageFormat,
-        SpriteRender,
-        SpriteSheet,
-        SpriteSheetFormat,
-        Texture,
         plugins::{RenderFlat2D, RenderToWindow},
         types::DefaultBackend,
         RenderingBundle,
@@ -53,7 +45,7 @@ fn main() -> amethyst::Result<()> {
         .with(systems::WinnerSystem, "winner_system", &["ball_system"]);
 
     let assets_dir = app_root.join("assets");
-    let mut world = World::new();
+    let _world = World::new();
     let mut game = Application::new(assets_dir, Pong::default(), game_data)?;
     game.run();
 
