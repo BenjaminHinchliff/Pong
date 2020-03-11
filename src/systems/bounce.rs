@@ -6,6 +6,7 @@ use amethyst::{
 
 use crate::pong::{Ball, Side, Paddle, ARENA_HEIGHT};
 
+#[derive(SystemDesc)]
 pub struct BounceSystem;
 
 impl<'s> System<'s> for BounceSystem {
