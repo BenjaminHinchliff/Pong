@@ -10,8 +10,11 @@ use amethyst::{
     ui::{Anchor, TtfFormat, UiText, UiTransform},
 };
 
+use crate::audio::initialize_audio;
+
 pub const PADDLE_WIDTH: f32 = 4.0;
 pub const PADDLE_HEIGHT: f32 = 16.0;
+pub const PADDLE_SPEED: f32 = 70.0;
 
 #[derive(PartialEq, Eq)]
 pub enum Side {
@@ -198,6 +201,7 @@ impl SimpleState for Pong {
         initialize_paddles(world, self.sprite_sheet_handle.clone().unwrap());
         initialize_camera(world);
         initialize_scoreboard(world);
+        initialize_audio(world);
     }
 
     fn update(&mut self, data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {

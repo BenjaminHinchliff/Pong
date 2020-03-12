@@ -9,6 +9,7 @@ amethyst = "0.14.0"
 
 [features]
 default = ["vulkan"]
+no-safety = ["amethyst/no-slow-safety-checks"]
 empty = ["amethyst/empty"]
 metal = ["amethyst/metal"]
 vulkan = ["amethyst/vulkan"]
