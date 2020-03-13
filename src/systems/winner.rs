@@ -11,7 +11,7 @@ use amethyst::{
 
 use crate::audio::{play_score_sound, Sounds};
 
-use crate::pong::{Ball, ScoreBoard, ScoreText, ARENA_WIDTH};
+use crate::pong::{Ball, ScoreBoard, ScoreText, ARENA_WIDTH, BALL_SLOWDOWN_TIME};
 
 #[derive(SystemDesc)]
 pub struct WinnerSystem;
@@ -61,6 +61,7 @@ impl<'s> System<'s> for WinnerSystem {
 
             if did_hit {
                 ball.velocity[0] = -ball.velocity[0];
+                ball.slowdown_timer.replace(BALL_SLOWDOWN_TIME);
                 transform.set_translation_x(ARENA_WIDTH / 2.0);
                 play_score_sound(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()));
             }

@@ -33,7 +33,7 @@ pub fn initialize_audio(world: &mut World) {
         let loader = world.read_resource::<Loader>();
         
         let mut sink = world.write_resource::<AudioSink>();
-        sink.set_volume(0.25);
+        sink.set_volume(0.1);
 
         let music = MUSIC_TRACKS.iter()
             .map(|file| load_audio_track(&loader, &world, file))
